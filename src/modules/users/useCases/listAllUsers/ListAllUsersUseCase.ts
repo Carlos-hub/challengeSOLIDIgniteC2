@@ -9,7 +9,11 @@ class ListAllUsersUseCase {
   constructor(private usersRepository: IUsersRepository) {}
 
   execute({ user_id }: IRequest): User[] {
-    // Complete aqui
+    const user = this.usersRepository.list();
+    console.log(user);
+    // const users = this.usersRepository.list();
+
+    return user;
   }
 }
 
