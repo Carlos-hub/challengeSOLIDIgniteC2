@@ -1,5 +1,3 @@
-import { UsersRepository } from "../../repositories/implementations/UsersRepository";
-import { User } from "../../model/User";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 
 interface IRequest {
@@ -16,6 +14,7 @@ class CreateUserUseCase {
       throw new Error("User already Exists!");
     }
     this.usersRepository.create({ name, email });
+    // return this.usersRepository;
   }
 }
 

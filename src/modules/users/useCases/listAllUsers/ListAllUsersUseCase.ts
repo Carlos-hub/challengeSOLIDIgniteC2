@@ -13,8 +13,6 @@ class ListAllUsersUseCase {
     console.log(id);
     const user = users.find((usuario) => usuario.id === id);
 
-    console.log(user);
-    user.admin = true;
     if (user.admin === true) {
       return users;
     }
