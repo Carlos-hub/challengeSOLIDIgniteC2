@@ -8,15 +8,18 @@ interface IRequest {
 class ListAllUsersUseCase {
   constructor(private usersRepository: IUsersRepository) {}
 
-  execute(id: IRequest): User[] {
-    const users = this.usersRepository.list();
-    console.log(id);
-    const user = users.find((usuario) => usuario.id === id);
+  execute({ user_id }: IRequest): User[] {
+    const users = this.usersRepository.findById(user_id);
 
-    if (user.admin === true) {
-      return users;
+    if (!users) {
+      throw new Error("User not found");
     }
-    throw new Error("Permission denied");
+    if (!users.admin) {
+      throw new Error("User is not an administrator");
+    }
+    const all = this.usersRepository.list();
+
+    return all;
   }
 }
 
