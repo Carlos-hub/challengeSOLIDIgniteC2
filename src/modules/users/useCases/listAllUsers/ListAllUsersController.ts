@@ -9,7 +9,7 @@ class ListAllUsersController {
     const { user_id } = request.headers;
     try {
       const all = this.listAllUsersUseCase.execute({
-        user_id :String(user_id),
+        user_id: String(user_id),
       });
       return response.json(all);
     } catch (err) {
